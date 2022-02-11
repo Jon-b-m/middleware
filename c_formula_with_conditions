@@ -35,7 +35,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 		  }
 
 		// Set the new ratio;
-    autosens.ratio = newRatio;
+    		autosens.ratio = newRatio;
 	
 		return logOutput;
 	} else { return "Chris' formula is disabled." }	
