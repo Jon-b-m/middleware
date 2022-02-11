@@ -34,7 +34,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 			logOutput = "Chris' formula hit limit by autosens_min setting: " + minLimitChris + ". ISF: " + (profile.sens / newRatio).toPrecision(4);
 		  }
 
-		// Set the new ratio;
+		// Set the new ratio
     		autosens.ratio = newRatio;
 	
 		return logOutput;
