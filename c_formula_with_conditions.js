@@ -16,7 +16,8 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	
 	// Turn off AutoISF and Chris' formula when using a temp target >= 118 (6.5 mol/l) and if an exercise setting is enabled.
 	if (currentMinTarget >= 118 && exerciseSetting == true) {
-		profile.use_autoisf = false;
+		// Uncoment line below if using AutoISF
+		// profile.use_autoisf = false;
 		chrisFormula = false;
 		logOutput = "Chris' formula off due to a high temp target/exercising. Current min target: " + currentMinTarget;
 	} 
