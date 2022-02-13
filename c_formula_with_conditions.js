@@ -8,7 +8,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	const adjustmentFactor = 1;
 	const currentMinTarget = profile.min_bg;
 	var exerciseSetting = false;
-	var logOutput = "";
+	var log = "";
 	
 	if (profile.high_temptarget_raises_sensitivity == true || profile.exercise_mode == true) {
 		exerciseSetting = true;
@@ -19,25 +19,25 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	if (currentMinTarget >= 118 && exerciseSetting == true) {
 		// profile.use_autoisf = false;
 		chrisFormula = false;
-		logOutput = "Chris' formula off due to a high temp target/exercising. Current min target: " + currentMinTarget;
+		log = "Chris' formula off due to a high temp target/exercising. Current min target: " + currentMinTarget;
 	} 
 
 	if (chrisFormula == true && TDD > 0) {
 		var newRatio = profile.sens / (277700 / (adjustmentFactor  * TDD * BG));
-		logOutput = "New ratio using Chris' formula is " + newRatio.toPrecision(4) + " with ISF: " + (profile.sens / newRatio).toPrecision(4) + ". TDD past 24h is: " + TDD;
+		log = "New ratio using Chris' formula is " + newRatio.toPrecision(4) + " with ISF: " + (profile.sens / newRatio).toPrecision(4) + ". TDD past 24h is: " + TDD;
 
 		// Respect autosens.max and autosens.min limits
 		if (newRatio > maxLimitChris) {
 			newRatio = maxLimitChris;
-			logOutput = "Chris' formula hit limit by autosens_max setting: " + maxLimitChris + ". ISF: " + (profile.sens / newRatio).toPrecision(4);
+			log = "Chris' formula hit limit by autosens_max setting: " + maxLimitChris + ". ISF: " + (profile.sens / newRatio).toPrecision(4);
 		} else if (newRatio < minLimitChris) {
 			newRatio = minLimitChris;
-			logOutput = "Chris' formula hit limit by autosens_min setting: " + minLimitChris + ". ISF: " + (profile.sens / newRatio).toPrecision(4);
+			log = "Chris' formula hit limit by autosens_min setting: " + minLimitChris + ". ISF: " + (profile.sens / newRatio).toPrecision(4);
 		  }
 
 		// Set the new ratio
     		autosens.ratio = newRatio;
 	
-		return logOutput;
+		return log;
 	} else { return "Chris' formula is disabled." }	
 }
