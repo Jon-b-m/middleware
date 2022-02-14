@@ -1,0 +1,162 @@
+[
+  {
+    "_id" : "23A42B5D-ADE3-43EE-B8BC-29329C83E430",
+    "name" : "30%",
+    "reason" : "30%",
+    "created_at" : "2022-02-14T12:32:48.830Z",
+    "targetTop" : 239.639639639639595425046668289919690946,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 239.639639639639595425046668289919690946
+  },
+  {
+    "_id" : "5D128506-5A5C-4566-A007-86203603B274",
+    "name" : "40%",
+    "reason" : "40%",
+    "created_at" : "2022-02-14T12:32:17.402Z",
+    "targetTop" : 190.990990990990955752292833373920956694,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 190.990990990990955752292833373920956694
+  },
+  {
+    "_id" : "7A08667A-F0AA-4035-9ECC-B4FD62D81036",
+    "name" : "50%",
+    "reason" : "50%",
+    "created_at" : "2022-02-14T12:31:59.037Z",
+    "targetTop" : 160.360360360360330773151529908292124016,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 160.360360360360330773151529908292124016
+  },
+  {
+    "_id" : "AB81F41F-E222-42E4-9FFB-F111458BE51E",
+    "name" : "60%",
+    "reason" : "60%",
+    "created_at" : "2022-02-14T12:31:36.216Z",
+    "targetTop" : 140.540540540540514610177745312885232284,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 140.540540540540514610177745312885232284
+  },
+  {
+    "_id" : "320C5166-64BF-49DC-948F-59362B418603",
+    "name" : "70%",
+    "reason" : "70%",
+    "created_at" : "2022-02-14T12:31:09.086Z",
+    "targetTop" : 126.126126126126102855287720152589311024,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 126.126126126126102855287720152589311024
+  },
+  {
+    "_id" : "49A7197B-0B9D-4935-8BE3-2A5BB8DFBD61",
+    "name" : "80%",
+    "reason" : "80%",
+    "created_at" : "2022-02-14T12:30:37.383Z",
+    "targetTop" : 115.315315315315294039120201282367370079,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 115.315315315315294039120201282367370079
+  },
+  {
+    "_id" : "18723400-9A63-4E75-931E-18CDD17E32A5",
+    "name" : "90%",
+    "reason" : "90%",
+    "created_at" : "2022-02-14T12:30:12.610Z",
+    "targetTop" : 106.306306306306286692313935557182419291,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 106.306306306306286692313935557182419291
+  },
+  {
+    "_id" : "583BE858-57DF-408F-BAC6-F45CF93850A5",
+    "name" : "100%",
+    "reason" : "100%",
+    "created_at" : "2022-02-14T12:29:39.661Z",
+    "targetTop" : 100.900900900900882284230176122071448819,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 100.900900900900882284230176122071448819
+  },
+  {
+    "_id" : "2B42AA8C-6771-401D-B69B-B6A62403848F",
+    "name" : "110%",
+    "reason" : "110%",
+    "created_at" : "2022-02-14T12:29:20.523Z",
+    "targetTop" : 95.495495495495477876146416686960478347,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 95.495495495495477876146416686960478347
+  },
+  {
+    "_id" : "746BE795-AAAD-43B7-ADB0-6DFB9B4E8255",
+    "name" : "120%",
+    "reason" : "120%",
+    "created_at" : "2022-02-14T12:29:02.953Z",
+    "targetTop" : 90.090090090090073468062657251849507874,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 90.090090090090073468062657251849507874
+  },
+  {
+    "_id" : "CE616DE0-52FF-4A12-B515-D89B7F61DB43",
+    "name" : "130%",
+    "reason" : "130%",
+    "created_at" : "2022-02-14T12:28:36.939Z",
+    "targetTop" : 86.486486486486470529340150961775527559,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 86.486486486486470529340150961775527559
+  },
+  {
+    "_id" : "5AE92BFA-1D23-4FDE-90CA-1E8BEAA81082",
+    "name" : "140%",
+    "reason" : "140%",
+    "created_at" : "2022-02-14T12:28:13.743Z",
+    "targetTop" : 82.882882882882867590617644671701547244,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 82.882882882882867590617644671701547244
+  },
+  {
+    "_id" : "90CF6FD5-BD43-4C97-9E79-2EFF02EB0316",
+    "name" : "150%",
+    "reason" : "150%",
+    "created_at" : "2022-02-14T12:27:46.364Z",
+    "targetTop" : 80.000000000000003690090090090089409251,
+    "duration" : 1440,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 80.000000000000003690090090090089409251
+  },
+  {
+    "_id" : "E7855635-9D07-4193-9864-9BE0E74E5D58",
+    "name" : "Eating soon",
+    "reason" : "Eating soon",
+    "created_at" : "2021-12-31T20:12:16.499Z",
+    "targetTop" : 79.279279279279264651895138381627566929,
+    "duration" : 60,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 79.279279279279264651895138381627566929
+  },
+  {
+    "_id" : "6BEE5E01-DF6C-43A1-B2A5-0C8BEBCFC571",
+    "name" : "Activity",
+    "reason" : "Activity",
+    "created_at" : "2021-12-16T12:46:31.409Z",
+    "targetTop" : 140.540540540540514610177745312885232284,
+    "duration" : 90,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 140.540540540540514610177745312885232284
+  },
+  {
+    "_id" : "548030F9-DCE7-4537-8D2A-E245400FF4B7",
+    "name" : "Hypo TT",
+    "reason" : "Hypo TT",
+    "created_at" : "2021-12-02T21:02:43.762Z",
+    "targetTop" : 126.126126126126102855287720152589311024,
+    "duration" : 45,
+    "enteredBy" : "freeaps-x",
+    "targetBottom" : 126.126126126126102855287720152589311024
+  }
+]
