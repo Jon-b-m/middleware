@@ -1,11 +1,14 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock) {
  	
 	const BG = glucose[0].glucose;
+	// To turn off change to false
 	var chrisFormula = true;
+	// Change to your own TDD
 	const TDD = 58;
 	const minLimitChris = profile.autosens_min;
 	const maxLimitChris = profile.autosens_max;
 	const adjustmentFactor = 1;
+	// Your current target, lower limit
 	const currentMinTarget = profile.min_bg;
 	var exerciseSetting = false;
 	var log = "";
