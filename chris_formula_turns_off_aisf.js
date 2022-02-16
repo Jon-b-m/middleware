@@ -6,7 +6,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	// Change to your own TDD
 	const TDD = 58;
 	const currentMinTarget = profile.min_bg;
-  const minLimitChris = profile.autosens_min;
+  	const minLimitChris = profile.autosens_min;
 	const maxLimitChris = profile.autosens_max;
 	const adjustmentFactor = 1;
 	var exerciseSetting = false;
