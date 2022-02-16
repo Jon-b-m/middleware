@@ -13,14 +13,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	var log = "";
 	
 	// Checks if an exercise mode is on
-  if (profile.high_temptarget_raises_sensitivity == true || profile.exercise_mode == true) {
+ 	if (profile.high_temptarget_raises_sensitivity == true || profile.exercise_mode == true) {
 		exerciseSetting = true;
 	}
 	
-  // Turns off AutoISF when using Chris's formula
-  if (chrisFormula == true && profile.use_autoisf = true) {
-    profile.use_autoisf = false;
-  }
+  	// Turns off AutoISF when using Chris's formula
+  	if (chrisFormula == true && profile.use_autoisf = true) {
+    		profile.use_autoisf = false;
+  	}
   
 	// Turn off Chris' formula when using a temp target >= 118 (6.5 mmol/l) and if an exercise setting is enabled.
 	if (currentMinTarget >= 118 && exerciseSetting == true) {
