@@ -11,6 +11,6 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
   if (dISF == true) {
  const newRatio = profile.sens / (277700  / (adjustableFactor * autosensRatio * BG));
   autosens.ratio = newRatio;
-  return "autosensRatio changed using Chris' formula from " + autosensRatio + " to: " + newRatio.toPrecision(4) + " with new ISF: " +  (profile.sens / newRatio).toPrecision(4) + " (" + ((profile.sens / newRatio) * 0.0555).toPrecision(4) + " mmol/L)";
+  return "autosensRatio changed using Chris' formula from " + autosensRatio + " to: " + newRatio.toPrecision(4) + " with new ISF: " +  (profile.sens / newRatio).toPrecision(4) + " (" + ((profile.sens / newRatio) * 0.0555).toPrecision(4) + " mmol/L/U)";
  } else  { return "Chris' formula is off. autosensRatio is: " + autosensRatio; }
 }
