@@ -18,6 +18,6 @@ As autosens' typical values are between 07 and 1.2 (the limits are adjusted with
 
 In order to identify the optimal value of adjustableFactor, it has been created a simulation file <B>Variable ISF simulation.numbers</B> to simulate the dynamic ISF curve vs static ISF. AutosensRatio should be equal to 1. 
 
-<B>Please note that this is an experimental approach, so be careful and use it at your onw risk!</B>
+<B>Please note that this is an experimental approach, so be careful and use it at your own risk!</B>
 
 ---------------------------------------
