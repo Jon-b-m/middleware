@@ -34,7 +34,6 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 	} 
 
 	// Calculate TDD --------------------------------------
-    
   	//Bolus:
   	for (let i = 0; i < pumphistory.length; i++) {
     		if (pumphistory[i]._type == "Bolus") {
@@ -80,9 +79,9 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     		}
   	}
   	logTDD = ". TDD past 24h is: " + TDD.toPrecision(3) + " U";
-  	// ---------------------------------------------------
-  	// Chris' formula:
-  
+  	// ----------------------------------------------------
+  	
+	// Chris' formula:
 	if (chrisFormula == true && TDD > 0) {
 		var newRatio = profile.sens / (277700 / (adjustmentFactor  * TDD * BG));
 		log = "New ratio using Chris' formula is " + newRatio.toPrecision(3) + " with ISF: " + (profile.sens / newRatio).toPrecision(3) + " (" + ((profile.sens / newRatio) * 0.0555).toPrecision(3) + " mmol/l/U)";
