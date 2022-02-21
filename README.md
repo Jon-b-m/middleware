@@ -27,4 +27,5 @@ This if only for testing. It calculates past 24 hours of total daily dose (TDD) 
 In order to use this middleware you first need to make the pump history accessible to FreeAPS X. This requires a commit from my freeaps/pumphistory branch. 
 
 <B>Please note that the TDD calculation might not be 100% correct and isn't covering all corner cases yet.</B>
+
 ---------------------------------------
