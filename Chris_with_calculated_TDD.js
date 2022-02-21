@@ -45,23 +45,23 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 
     // Temp basals:
     for (let j = 1; j < pumphistory.length; j++) {
-    	if (pumphistory[j]._type == "TempBasal" && pumphistory[j].rate > 0) {
-        	current = j;
-                quota = pumphistory[j].rate;
-                var duration = pumphistory[j-1]['duration (min)'] / 60;
-                var origDur = duration;
-                var pastTime = new Date(pumphistory[j-1].timestamp);
+    	     if (pumphistory[j]._type == "TempBasal" && pumphistory[j].rate > 0) {
+        	     current = j;
+               quota = pumphistory[j].rate;
+               var duration = pumphistory[j-1]['duration (min)'] / 60;
+               var origDur = duration;
+               var pastTime = new Date(pumphistory[j-1].timestamp);
                              
                 // If temp basal hasn't yet ended, use now as end date for calculation
-                do {
-                	j--;
-                        if (j <= 0) {
-                        	var morePresentTime =  new Date();
-                          	break;
-                        } else if (pumphistory[j]._type == "TempBasal" || pumphistory[j]._type == "PumpSuspend") {
-                          	var morePresentTime = new Date(pumphistory[j].timestamp);
-                                break;
-                          }
+               do {
+                    j--;
+                    if (j <= 0) {
+                         var morePresentTime =  new Date();
+                         break;
+                    } else if (pumphistory[j]._type == "TempBasal" || pumphistory[j]._type == "PumpSuspend") {
+                         var morePresentTime = new Date(pumphistory[j].timestamp);
+                         break;
+                     }
                 }
                 while (j >= 0);
                   
@@ -84,7 +84,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                 // Add temp basal delivered to TDD
                 TDD += insulin;
                 j = current;
-        }
+          }
     }
     logTDD = ". TDD past 24h is: " + TDD.toPrecision(3) + " U";
     // ----------------------------------------------------
