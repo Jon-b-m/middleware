@@ -54,7 +54,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
       			do {
         			--j;
       			}
-      			while (pumphistory[j]._type !== "TempBasal");
+      			while (pumphistory[j]._type !== "TempBasal" && pumphistory[j]._type !== "PumpSuspend");
                 
       			var morePresentTime = new Date(pumphistory[j].timestamp);
       			var diff = (morePresentTime - pastTime) / 36e5;
