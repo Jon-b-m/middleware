@@ -21,3 +21,10 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 <B>Please note that this is an experimental approach, so be careful and use it at your own risk!</B>
 
 ---------------------------------------
+<B> Chris_with_calculated_TDD.js </B>
+
+This if only for testing. It calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop. Please do not change TDD = 0, because that will result in doubling your TDD, since it counts from 0.
+In order to use this middleware you first need to make the pump history accessible to FreeAPS X. This requires a commit from my freeaps/pumphistory branch. 
+
+<B>Please note that the TDD calculation might not be 100% correct and isn't covering all corner cases yet.</B>
+---------------------------------------
