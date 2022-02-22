@@ -23,7 +23,7 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 ---------------------------------------
 <B> Chris_with_calculated_TDD.js </B>
 
-This is for testing. It calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop, for use with Chris Wilson's formula. Autosens min/max settings are respected. WHen using a high temp target (>= 117 mg/dl) toghether with an exercise setting, Chris' formula is turned off (as well as AutoISF, if this is used).
+This is for testing. It calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop, for use with Chris Wilson's formula. Autosens min/max settings are respected. When using a high temp target (>= 117 mg/dl) together with an exercise setting, Chris' formula is turned off (as well as AutoISF, if this is used).
 
 In order to use this middleware you first need to make the pump history accessible to FreeAPS X. This requires a commit from my branch: https://github.com/Jon-b-m/freeaps/tree/pumphistory_mw .
 
