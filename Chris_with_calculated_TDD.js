@@ -149,9 +149,9 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             let basDuration = (time2 - time1) / 36e5;
             if ((pumphistory[i-1]['duration (min)'] / 60 ) < basDuration) {
                 let timeOrig = new Date(pumphistory[i-1].timestamp);
-                for (let l = i-1; l < pumphistory.length; l++) {
+                for (let l = i-1; l < pumphistory.length; l--) {
                     if (pumphistory[l]._type == "TempBasal") {
-                        let timeNext = new Date(timeOrig = pumphistory[l].timestamp);
+                        let timeNext = new Date(pumphistory[l].timestamp);
                         break;
                     }
                 }
