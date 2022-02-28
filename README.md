@@ -36,3 +36,12 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 <B>Please note that this is an experimental approach, so be careful and use it at your own risk!</B>
 
 ---------------------------------------
+
+<B> c_formula_with_conditions.js <B> 
+  
+ This is Chris' formula but without the TDD calculation. You need to enter your TDD manually in middlware. 
+  
+ Autosens min/max limits in FAX settings are used to limit the dynamic ISF. Normal autosens is by-passed.
+ 
+ adjustmentFactor to change Chris'constant. I higer value (>1) means more dramatic ISF changes, a lower (<1) means less aggresive changes. 
+                                                                                                             
