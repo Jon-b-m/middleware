@@ -51,6 +51,6 @@ In order to identify the optimal value of adjustableFactor, it has been created 
   
  This is Chris_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set  in FAX preferences.
   
-Middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use by branch mw_preferences).
+Middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my branch mw_preferences).
   
 ---------------------------------------
