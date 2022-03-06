@@ -36,7 +36,6 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 <B>Please note that this is an experimental approach, so be careful and use it at your own risk!</B>
 
 ---------------------------------------
-
 <B> c_formula_with_conditions.js <B> 
   
  This is Chris' formula but without the TDD calculation. You need to enter your TDD manually in middlware. 
@@ -45,8 +44,7 @@ In order to identify the optimal value of adjustableFactor, it has been created 
  
  adjustmentFactor to change Chris'constant. I higer value (>1) means more dramatic ISF changes, a lower (<1) means less aggresive changes. 
                                                                                                              
----------------------------------------
-                                                                                                             
+---------------------------------------                                                                                                            
 <B> preferences_and_pumphistory.js <B>
   
  This is Chris_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set  in FAX preferences.
