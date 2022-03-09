@@ -178,7 +178,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                 if (o >= 0) {
                     if (pumphistory[o]._type == "TempBasal") {
                         // time of next (new) temp basal
-                        let newTime = new Date(pumphistory[o].timestamp);
+                        newTime = new Date(pumphistory[o].timestamp);
                         break;
                     }
                 }
