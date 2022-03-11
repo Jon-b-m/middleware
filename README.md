@@ -1,7 +1,8 @@
 # middleware
 For use with FreeAPS X.
 
-You can copy and paste into FAX, but at your own risk, so please be careful!
+You can copy and paste (replace) into FAX middleware function, but at your own risk, so please be careful!
+To access middleware on your phone, first enable debug settings.
 
 Telegram group for interaction and sharing:
 https://t.me/middleware_freeaps_x
@@ -47,8 +48,8 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 ---------------------------------------                                                                                                            
 <B> preferences_and_pumphistory.js <B>
   
- This is Chris_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set  in FAX preferences.
+ Chris_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set  in FAX preferences.
   
-Middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my branch mw_preferences).
+This middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my/merge from branch mw_preferences).
   
 ---------------------------------------
