@@ -6,7 +6,6 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     var chrisFormula = preferences.enableChris;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
-    const adjustmentFactor = preferences.adjustmentFactor;
     const currentMinTarget = profile.min_bg;
     var exerciseSetting = false;
     var enoughData = false;
@@ -253,7 +252,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     logBasal = ". Delivered scheduled basal insulin: " + scheduledBasalInsulin.toPrecision(5) + " U";
     logTDD = ". TDD past 24h is: " + TDD.toPrecision(5) + " U";
     // ----------------------------------------------------
-      
+    
     // Chris' formula with added adjustmentFactor for tuning:
     if (chrisFormula == true && TDD > 0) {
         var newRatio = profile.sens / (277700 / (adjustmentFactor  * TDD * BG));
@@ -261,11 +260,11 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 
         // Respect autosens.max and autosens.min limits
         if (newRatio > maxLimitChris) {
-            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / maxLimitChris).toPrecision(3) + " (" + ((profile.sens / maxLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
-            newRatio = maxLimitChris;        
+            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / maxLimitChris).toPrecision(3) + " (" + ((profile.sens / maxLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
+            newRatio = maxLimitChris;
         } else if (newRatio < minLimitChris) {
             log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / minLimitChris).toPrecision(3) + " (" + ((profile.sens / minLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
-            newRatio = minLimitChris;  
+            newRatio = minLimitChris;
         }
 
         // Set the new ratio
