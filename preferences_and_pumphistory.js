@@ -6,6 +6,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     var chrisFormula = preferences.enableChris;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
+    const adjustmentFactor = preferences.adjustmentFactor;
     const currentMinTarget = profile.min_bg;
     var exerciseSetting = false;
     var enoughData = false;
