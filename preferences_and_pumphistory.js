@@ -1,8 +1,7 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware only works if you have added pumphistory and preferences to middleware in FreeAPS X code (my mw_preferences branch).
+    // This middleware only works if you have access to preferences and pump history in middleware in FreeAPS X (my mw_preferences branch).
     const BG = glucose[0].glucose;
-    // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
@@ -17,7 +16,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     var logBolus = "";
     var logTempBasal = "";
     var current = 0;
-    // If you have not set this to 0.05 in FAX settings (Omnipod), this will be set to 0.1 in code.
+    // This should be set to 0.05 in FAX settings for Omnipod, otherwise the deafult of 0.1 will be used as increment for TDD calculations.
     var minimalDose = profile.bolus_increment;
     var TDD = 0;
     var insulin = 0;
@@ -205,8 +204,6 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                 
                 // Timestamp after completed temp basal
                 let timeOfScheduledBasal = new Date(oldTime.getTime() + oldBasalDuration*36e5);
-                
-                //oldTime.setHours( oldTime.getHours() + oldBasalDuration );
                 
                 let hour = timeOfScheduledBasal.getHours();
                 let minutes = timeOfScheduledBasal.getMinutes();
