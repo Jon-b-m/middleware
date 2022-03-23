@@ -1,7 +1,8 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware only works if you have access to preferences and pump history in middleware in FreeAPS X (my mw_preferences branch).
+    // This middleware only works if you have added pumphistory and preferences to middleware in FreeAPS X code (my mw_preferences branch).
     const BG = glucose[0].glucose;
+    // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
@@ -16,7 +17,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     var logBolus = "";
     var logTempBasal = "";
     var current = 0;
-    // This should be set to 0.05 in FAX settings for Omnipod, otherwise the deafult of 0.1 will be used as increment for TDD calculations.
+    // If you have not set this to 0.05 in FAX settings (Omnipod), this will be set to 0.1 in code.
     var minimalDose = profile.bolus_increment;
     var TDD = 0;
     var insulin = 0;
@@ -264,9 +265,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / minLimitChris).toPrecision(3) + " (" + ((profile.sens / minLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
             newRatio = minLimitChris;
         }
-
+        
+        function round(value, precision) {
+            var multiplier = Math.pow(10, precision || 0);
+            return Math.round(value * multiplier) / multiplier;
+        }
+        
         // Set the new ratio
-        autosens.ratio = newRatio;
+        autosens.ratio = round(newRatio, 2);
         // Print to log
         return log + logTDD + logBolus + logTempBasal + logBasal;
         
