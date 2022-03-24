@@ -268,8 +268,13 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             newRatio = minLimitChris;  
         }
 
+        function round(value, precision) {
+            var multiplier = Math.pow(10, precision || 0);
+            return Math.round(value * multiplier) / multiplier;
+        }
+        
         // Set the new ratio
-        autosens.ratio = newRatio;
+        autosens.ratio = round(newRatio, 2);
         // Print to log
         return log + logTDD + logBolus + logTempBasal + logBasal; // + " TimeDiff: " + timeOfbasal + " baseTime: " + baseTime + " insulin:" + insulin;
         
