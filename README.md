@@ -24,11 +24,11 @@ In order to use this middleware you first need to make the pump history accessib
 <B>Please do not change TDD = 0, because that will result in doubling your TDD, since it counts from 0. This middleware requires 24 hours of pump history data for an accurate TDD count. Middleware will only run if >= 23 hours of pumphistory data. TDD calculation has only been tested with Omnipod. </B>
 
 ---------------------------------------                                                                                                           
-<B> Dynamic_ISF_with_calculated_TDD_with_preferences.js <B>
+<B> Dynamic_ISF_with_calculated_TDD_with_preferences.js </B>
   
 Like Dynamic_ISF_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set in FAX preferences.
   
-<B> This middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my/merge from branch mw_preferences). <B>
+<B> This middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my/merge from branch mw_preferences). </B>
   
 ---------------------------------------
 <B> Dynamic_ISF_and_CR_and_TDD.js </B>
