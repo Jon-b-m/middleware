@@ -9,7 +9,7 @@ https://t.me/middleware_freeaps_x
 
 
 ---------------------------------------
-<B> Chris_with_calculated_TDD.js </B>
+<B> Dynamic_ISF_with_calculated_TDD.js </B>
 
 Calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop for use with Chris Wilson's formula. 
 
@@ -23,7 +23,21 @@ In order to use this middleware you first need to make the pump history accessib
 
 <B>Please do not change TDD = 0, because that will result in doubling your TDD, since it counts from 0. This middleware requires 24 hours of pump history data for an accurate TDD count. Middleware will only run if >= 23 hours of pumphistory data. TDD calculation has only been tested with Omnipod. </B>
 
+---------------------------------------                                                                                                           
+<B> Dynamic_ISF_with_calculated_TDD_with_preferences.js <B>
+  
+Like Dynamic_ISF_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set in FAX preferences.
+  
+<B> This middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my/merge from branch mw_preferences). <B>
+  
 ---------------------------------------
+<B> Dynamic_ISF_and_CR_and_TDD.js </B>
+Like Dynamic_ISF_with_calculated_TDD.js but with optional Dynamic CR in mw and in settings. 
+
+<B> Only works with my branch dyn_ISF_and_CR </B>
+  
+---------------------------------------
+  
 <B> Chris_formula_autosensRatio.js </B>
 
 Chris' formula for <I>dynamic ISF=277700 / (TDD * BG)</I> is currently a challange to implement it in <B>FreeAPS X</B> (FAX) via middlware file due to missing TDD info in FAX.
@@ -39,17 +53,10 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 ---------------------------------------
 <B> c_formula_with_conditions.js <B> 
   
- This is Chris' formula but without the TDD calculation. You need to enter your TDD manually in middlware. 
+ This is Chris' original formula without the TDD calculation. You need to enter your TDD manually in middlware. 
   
  Autosens min/max limits in FAX settings are used to limit the dynamic ISF. Normal autosens is by-passed.
  
  adjustmentFactor to change Chris'constant. I higer value (>1) means more dramatic ISF changes, a lower (<1) means less aggresive changes. 
                                                                                                              
----------------------------------------                                                                                                            
-<B> preferences_and_pumphistory.js <B>
-  
- Chris_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set  in FAX preferences.
-  
-This middleware only works when you have access to preferences.json and pumphistory-24h-zoned.json in middleware (use my/merge from branch mw_preferences).
-  
----------------------------------------
+
