@@ -1,6 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory) {
      
-    // This middleware only works if you have added pumphistory to middleware in FreeAPS X code (my pumphistory branch).
+    // This middleware calculates past 24 hours of total daily dose of insulin and then sets a new dynamic ISF (autosens ratio) every loop.
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = true;
