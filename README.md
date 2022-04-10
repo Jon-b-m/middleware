@@ -25,7 +25,7 @@ In order to use this middleware you first need to have the pump history accessib
 
 
 ---------------------------------------                                                                                                           
-<B>Dynamic_ISF_with_calculated_TDD_with_preferences.js </B>
+<B>DISF_with_TDD_and_preferences.js </B>
 
 Like Dynamic_ISF_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set in FAX preferences.
   
