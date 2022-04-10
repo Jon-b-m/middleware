@@ -1,7 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware only works with dyn_ISF_and_CR branch (it needs the new optional preferences fields etc).
-    //
+    // This middleware only works if you have added pumphistory and preferences to middleware in FreeAPS X code (my mw_preferences branch).
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
@@ -34,10 +33,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         exerciseSetting = true;
     }
     
+    // Turns off Auto-ISF when using Dynamic ISF.
+    if (profile.use_autoisf == true && chrisFormula == true) {
+        profile.use_autoisf = false;
+    }
+    
     // Turn off Chris' formula (and AutoISF) when using a temp target >= 118 (6.5 mol/l) and if an exercise setting is enabled.
-    // If using AutoISF uncomment the profile.use_autoisf = false
     if (currentMinTarget >= 118 && exerciseSetting == true) {
-        // profile.use_autoisf = false;
+        profile.use_autoisf = false;
         chrisFormula = false;
         log = "Dynamic ISF temporarily off due to a high temp target/exercising. Current min target: " + currentMinTarget;
     }
@@ -113,12 +116,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     //  Check and count for when basals are delivered with a scheduled basal rate or an Autotuned basal rate.
     //  1. Check for 0 temp basals with 0 min duration. This is for when ending a manual temp basal and (perhaps) continuing in open loop for a while.
     //  2. Check for temp basals that completes. This is for when disconected from link/iphone, or when in open loop.
-    //  To do: need to check for more circumstances when scheduled basal rates are used.
+    //  3. Account for a punp suspension.
+    //  4. Account for a pump resume (in case pump/cgm is disconnected before next loop).
+    //  To do: are there more circumstances when scheduled basal rates are used?
     //
     for (let k = 0; k < pumphistory.length; k++) {
         // Check for 0 temp basals with 0 min duration.
         insulin = 0;
-        if (pumphistory[k]['duration (min)'] == 0) {
+        if (pumphistory[k]['duration (min)'] == 0 || pumphistory[k]._type == "PumpResume") {
             let time1 = new Date(pumphistory[k].timestamp);
             let time2 = time1;
             let l = k;
@@ -183,8 +188,8 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             do {
                 --o;
                 if (o >= 0) {
-                    if (pumphistory[o]._type == "TempBasal") {
-                        // time of next (new) temp basal
+                    if (pumphistory[o]._type == "TempBasal" || pumphistory[o]._type == "PumpSuspend") {
+                        // time of next (new) temp basal or a pump suspension
                         newTime = new Date(pumphistory[o].timestamp);
                         break;
                     }
