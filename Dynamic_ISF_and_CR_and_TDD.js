@@ -1,6 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware only works if you have added pumphistory and preferences to middleware in FreeAPS X code (my mw_preferences branch).
+    // This middleware only works with my dyn_ISF_and_CR branch).
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
@@ -33,14 +33,9 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         exerciseSetting = true;
     }
     
-    // Turns off Auto-ISF when using Dynamic ISF.
-    if (profile.use_autoisf == true && chrisFormula == true) {
-        profile.use_autoisf = false;
-    }
-    
     // Turn off Chris' formula (and AutoISF) when using a temp target >= 118 (6.5 mol/l) and if an exercise setting is enabled.
     if (currentMinTarget >= 118 && exerciseSetting == true) {
-        profile.use_autoisf = false;
+        // profile.use_autoisf = false;
         chrisFormula = false;
         log = "Dynamic ISF temporarily off due to a high temp target/exercising. Current min target: " + currentMinTarget;
     }
