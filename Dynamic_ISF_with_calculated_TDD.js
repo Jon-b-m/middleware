@@ -1,6 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware will work with my dyn_ISF_and_CR branch and my bdb branch).
+    // This middleware will work with my mw_preferences branch.
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
@@ -79,7 +79,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         return difference;
     }
 
-    function calcScheduledBasalInsulin(lastRealTempTime, addedLastTempTime) {   
+    function calcScheduledBasalInsulin(lastRealTempTime, addedLastTempTime) {
         
         var totalInsulin = 0;
         var old = addedLastTempTime;
@@ -103,24 +103,24 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                 var basalScheduledRate_ = profile.basalprofile[0].start;
                 for (let m = 0; m < profile.basalprofile.length; m++) {
                     
-                    var timeToTest = profile.basalprofile[m].start; 
+                    var timeToTest = profile.basalprofile[m].start;
                     
                     if (baseTime_ == timeToTest) {
                         
-                        if (m + 1 < profile.basalprofile.length) {                      
-                            let end = profile.basalprofile[m+1].start;            
+                        if (m + 1 < profile.basalprofile.length) {
+                            let end = profile.basalprofile[m+1].start;
                             let start = profile.basalprofile[m].start;
                                                         
                             durationCurrentSchedule = timeDifferenceOfString(end, start);
                             
                             if (totalDuration >= durationCurrentSchedule) {
                                 basDuration = durationCurrentSchedule;
-                            } else if (totalDuration < durationCurrentSchedule) { 
+                            } else if (totalDuration < durationCurrentSchedule) {
                                 basDuration = totalDuration;
                             }
                             
                         }
-                        else if (m + 1 == profile.basalprofile.length) {                  
+                        else if (m + 1 == profile.basalprofile.length) {
                             let end = profile.basalprofile[0].start;
                             let start = profile.basalprofile[m].start;
                             // First schedule is 00:00:00. Changed places of start and end here.
@@ -128,7 +128,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                             
                             if (totalDuration >= durationCurrentSchedule) {
                                 basDuration = durationCurrentSchedule;
-                            } else if (totalDuration < durationCurrentSchedule) { 
+                            } else if (totalDuration < durationCurrentSchedule) {
                                 basDuration = totalDuration;
                             }
                         
@@ -146,27 +146,27 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                         if (m + 1 < profile.basalprofile.length) {
                             var timeToTest2 = profile.basalprofile[m+1].start
                          
-                            if (baseTime_ < timeToTest2) {                       
+                            if (baseTime_ < timeToTest2) {
                                 
                                //  durationCurrentSchedule = timeDifferenceOfString(end, start);
-                               durationCurrentSchedule = timeDifferenceOfString(timeToTest2, baseTime_);             
+                               durationCurrentSchedule = timeDifferenceOfString(timeToTest2, baseTime_);
                             
                                 if (totalDuration >= durationCurrentSchedule) {
                                     basDuration = durationCurrentSchedule;
-                                } else if (totalDuration < durationCurrentSchedule) { 
+                                } else if (totalDuration < durationCurrentSchedule) {
                                     basDuration = totalDuration;
                                 }
                                  
                                 basalScheduledRate_ = profile.basalprofile[m].rate;
                                 totalInsulin += accountForIncrements(basalScheduledRate_ * basDuration);
-                                totalDuration -= basDuration;                 
-                                console.log("scheduled insulin added: " + accountForIncrements(basalScheduledRate_ * basDuration) + ", . Bas duration: " + basDuration + " . Base Rate: " + basalScheduledRate_ + " U/h" + ". Time :" + baseTime_);                   
+                                totalDuration -= basDuration;
+                                console.log("scheduled insulin added: " + accountForIncrements(basalScheduledRate_ * basDuration) + ", . Bas duration: " + basDuration + " . Base Rate: " + basalScheduledRate_ + " U/h" + ". Time :" + baseTime_);
                                 // Move clock to new date
                                 old = addTimeFromDate(old, basDuration);
                             }
                         }
                     
-                        else if (m == profile.basalprofile.length - 1) {                     
+                        else if (m == profile.basalprofile.length - 1) {
                             // let start = profile.basalprofile[m].start;
                             let start = baseTime_;
                             // First schedule is 00:00:00. Changed places of start and end here.
@@ -174,14 +174,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
                             
                             if (totalDuration >= durationCurrentSchedule) {
                                 basDuration = durationCurrentSchedule;
-                            } else if (totalDuration < durationCurrentSchedule) { 
+                            } else if (totalDuration < durationCurrentSchedule) {
                                 basDuration = totalDuration;
                             }
                             
                             basalScheduledRate_ = profile.basalprofile[m].rate;
                             totalInsulin += accountForIncrements(basalScheduledRate_ * basDuration);
                             totalDuration -= basDuration;
-                            console.log("scheduled insulin added: " + accountForIncrements(basalScheduledRate_ * basDuration) + ", . Bas duration: " + basDuration + " . Base Rate: " + basalScheduledRate_ + " U/h" + ". Time :" + baseTime_);                
+                            console.log("scheduled insulin added: " + accountForIncrements(basalScheduledRate_ * basDuration) + ", . Bas duration: " + basDuration + " . Base Rate: " + basalScheduledRate_ + " U/h" + ". Time :" + baseTime_);
                             // Move clock to new date
                             old = addTimeFromDate(old, basDuration);
                         }
@@ -224,8 +224,8 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         pumpData = (startDate - endDate) / 36e5;
         
         if (pumpData < 23.5) {
-            var missingHours = 24 - pumpData;          
-            // Makes new end date for a total time duration of exakt 24 hour.      
+            var missingHours = 24 - pumpData;
+            // Makes new end date for a total time duration of exakt 24 hour.
             var endDate_ = subtractTimeFromDate(endDate, missingHours);
             // endDate - endDate_ = missingHours
             scheduledBasalInsulin = calcScheduledBasalInsulin(endDate, endDate_);
@@ -241,7 +241,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         }
     }
     
-    // Temp basals:  
+    // Temp basals:
     for (let j = 1; j < pumphistory.length; j++) {
         if (pumphistory[j]._type == "TempBasal" && pumphistory[j].rate > 0) {
             current = j;
@@ -336,7 +336,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             if (timeOfbasal > 0) {
 
                 // Timestamp after completed temp basal
-                let timeOfScheduledBasal =  addTimeFromDate(oldTime, oldBasalDuration); 
+                let timeOfScheduledBasal =  addTimeFromDate(oldTime, oldBasalDuration);
                 scheduledBasalInsulin += calcScheduledBasalInsulin(newTime, timeOfScheduledBasal);
             }
         }
@@ -373,7 +373,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         }
         
         // Print to log
-        logOutPut = dataLog + log + logTDD + logBolus + logTempBasal + logBasal;  
+        logOutPut = dataLog + log + logTDD + logBolus + logTempBasal + logBasal;
     }   else { logOutPut = "Dynamic ISF is off."; }
 
     return logOutPut;
