@@ -354,14 +354,14 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     // Chris' formula with added adjustmentFactor for tuning:
     if (chrisFormula == true && TDD > 0) {
         var newRatio = profile.sens / (277700 / (adjustmentFactor  * TDD * BG));
-        log = "New ratio using Dynamic ISF is " + newRatio.toPrecision(3) + " with ISF: " + (profile.sens / newRatio).toPrecision(3) + " (" + ((profile.sens / newRatio) * 0.0555).toPrecision(3) + " mmol/l/U)";
+        log = "New ratio using Dynamic ISF is " + newRatio.toPrecision(3) + " with ISF: " + (profile.sens / newRatio).toPrecision(3) + " mg/dl/U (" + ((profile.sens / newRatio) * 0.0555).toPrecision(3) + " mmol/l/U)";
 
         // Respect autosens.max and autosens.min limits
         if (newRatio > maxLimitChris) {
-            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / maxLimitChris).toPrecision(3) + " (" + ((profile.sens / maxLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
+            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / maxLimitChris).toPrecision(3) + " mg/dl/U (" + ((profile.sens / maxLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
             newRatio = maxLimitChris;
         } else if (newRatio < minLimitChris) {
-            log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / minLimitChris).toPrecision(3) + " (" + ((profile.sens / minLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
+            log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / minLimitChris).toPrecision(3) + " mg/dl/U (" + ((profile.sens / minLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U)";
             newRatio = minLimitChris;
         }
         
