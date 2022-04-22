@@ -1,12 +1,11 @@
-function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
+function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory) {
      
     // This middleware will work with my mw_preferences branch.
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
-    var chrisFormula = preferences.enableChris;
+    var chrisFormula = true;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
-    const adjustmentFactor = preferences.adjustmentFactor;
     const currentMinTarget = profile.min_bg;
     var exerciseSetting = false;
     var pumpData = 0;
