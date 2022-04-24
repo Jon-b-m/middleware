@@ -45,7 +45,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         var new_date = new Date(ms_ - add_ms_);
         return new_date;
     }
-        
+    
     function accountForIncrements(insulin) {
         // If you have not set this to 0.05 in FAX settings (Omnipod), this will be set to 0.1 (Medtronic) in code.
         var minimalDose = profile.bolus_increment;
@@ -58,11 +58,18 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             return round(incrementsRounded * minimalDose, 5);
         } else { return 0; }
     }
-    
-    function addZero(i) {
-        if (i < 10) {i = "0" + i}
-        return i;
-      }
+
+    function makeBaseString(base_timeStamp) {   
+        function addZero(i) {
+            if (i < 10) {i = "0" + i}
+            return i;
+        }     
+        let hour = addZero(base_timeStamp.getHours());
+        let minutes = addZero(base_timeStamp.getMinutes());
+        let seconds = "00";
+        let string = hour + ":" + minutes + ":" + seconds;     
+        return string;
+    }
        
     function timeDifferenceOfString(string1, string2) {
         //Base time strings are in "00:00:00" format
@@ -70,8 +77,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         var time2 = new Date("1/1/1999 " + string2);
         var ms1 = time1.getTime();
         var ms2 = time2.getTime();
-        var difference = (ms1 - ms2) / 36e5;
-        
+        var difference = (ms1 - ms2) / 36e5;      
         return difference;
     }
 
@@ -88,11 +94,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
 
             if (totalDuration > 0) {
                 
-                let hour = addZero(old.getHours());
-                let minutes = addZero(old.getMinutes());
-                let seconds = "00";
-                let string = hour + ":" + minutes + ":" + seconds;
-                var baseTime_ = string;
+                var baseTime_ = makeBaseString(old);
                 
                 //Default basalrate in case none is found...
                 var basalScheduledRate_ = profile.basalprofile[0].start;
