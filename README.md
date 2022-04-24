@@ -11,7 +11,11 @@ https://t.me/middleware_freeaps_x
 ---------------------------------------
 <B>Dynamic_ISF_with_calculated_TDD.js </B>
 
-Calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop for use with Chris Wilson's formula. 
+Calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop. If not enough data in pump history (<23.5 h), your scheduled basal rate insulin will replace the missing hours. But normally if you've run FAX for 24 hours, pump history data will be enough.
+
+A new autosens ratio is set using Chris Wilson's formula: newRatio = profile.sens * adjustmentFactor * TDD * BGG / 277700 .
+profile.sens: your ISF in profile.
+Your new ISF = profile.sens / newRatio .
 
 Autosens min/max settings are respected, for me 0.7 - 1.3 works well. This middleware by-passes the normal autosens, unless when using a high temp target while exercising, and the autosens limits are instead used for limiting the dynamic ISF. 
 
