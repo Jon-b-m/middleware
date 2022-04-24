@@ -33,16 +33,16 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     }
     
     function addTimeToDate(objDate, _hours) {
-        var numberOfMlSeconds = objDate.getTime();
-        var addMlSeconds = _hours * 36e5;
-        var newDateObj = new Date(numberOfMlSeconds + addMlSeconds);
+        var ms = objDate.getTime();
+        var add_ms = _hours * 36e5;
+        var newDateObj = new Date(ms + add_ms);
         return newDateObj;
     }
       
     function subtractTimeFromDate(date, hours_) {
-        var miSeconds = date.getTime();
-        var addMiSeconds = hours_ * 36e5;
-        var new_date = new Date(miSeconds - addMiSeconds);
+        var ms_ = date.getTime();
+        var add_ms_ = hours_ * 36e5;
+        var new_date = new Date(ms_ - add_ms_);
         return new_date;
     }
         
@@ -68,9 +68,9 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         //Base time strings are in "00:00:00" format
         var time1 = new Date("1/1/1999 " + string1);
         var time2 = new Date("1/1/1999 " + string2);
-        var miS1 = time1.getTime();
-        var miS2 = time2.getTime();
-        var difference = (miS1 - miS2) / 36e5;
+        var ms1 = time1.getTime();
+        var ms2 = time2.getTime();
+        var difference = (ms1 - ms2) / 36e5;
         
         return difference;
     }
@@ -83,7 +83,6 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         var basDuration = 0;
         var totalDurationCheck = totalDuration;
         var durationCurrentSchedule = 0;
-        var pp = 0;
         
         do {
 
