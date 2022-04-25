@@ -1,6 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory) {
      
-    // This middleware will work with my mw_preferences branch.
+    //
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = true;
