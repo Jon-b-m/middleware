@@ -1,8 +1,7 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware will work with my mw_preferences branch and my dyn_ISF_and_CR snd bdb branch).
+    // This middleware will work with my mw_preferences branch.
     const BG = glucose[0].glucose;
-    // Change to false to turn off Chris Wilson's formula
     var chrisFormula = preferences.enableChris;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
