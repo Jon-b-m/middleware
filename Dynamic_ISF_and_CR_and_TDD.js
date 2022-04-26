@@ -1,6 +1,8 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
      
-    // This middleware will work with my dyn_ISF_and_CR branch and my bdb branch).
+    // This middleware will work with my dyn_ISF_and_CR branch and my bdb branch.
+    // You turn on/off Dynamic ISF and CR in FreeAPS X settings.
+    // You adjust the Adjustment Factor in FreeAPS X settings.
     const BG = glucose[0].glucose;
     var chrisFormula = preferences.enableChris;
     var useDynamicCR = preferences.enableDynamicCR;
