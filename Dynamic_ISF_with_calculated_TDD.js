@@ -4,6 +4,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     const BG = glucose[0].glucose;
     // Change to false to turn off Chris Wilson's formula
     var chrisFormula = true;
+    const adjustmentFactor = 1;
     const minLimitChris = profile.autosens_min;
     const maxLimitChris = profile.autosens_max;
     const currentMinTarget = profile.min_bg;
