@@ -65,4 +65,4 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 ---------------------------------------
 <B>bdb_branch.js </B> 
  
- Experimental MW for my ow use and for testing new code. 
+ Experimental MW for my own use and for testing new code. 
