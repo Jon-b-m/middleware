@@ -23,8 +23,6 @@ When using a high temp target (>= 118 mg/dl) together with an exercise setting, 
 
 adjustmentFactor is used for tuning of the constant 277700 in Chris Wilson's formula. More  dramatic ISF change > 1 > less dramtaic ISF change. 1 is set as default. 
 
-In order to use this middleware you first need to have the pump history accessible to FreeAPS X. This requires use of Ivan's dev branch.
-
 <B>Please do not change TDD = 0, because that will result in doubling your TDD, since it counts from 0. </B>
 
 
@@ -64,4 +62,7 @@ In order to identify the optimal value of adjustableFactor, it has been created 
  
  adjustmentFactor to change Chris'constant. I higer value (>1) means more dramatic ISF changes, a lower (<1) means less aggresive changes. 
                                                                                                              
-
+---------------------------------------
+<B>bdb_branch.js </B> 
+ 
+ Experimental MW for my ow use and for testing new code. 
