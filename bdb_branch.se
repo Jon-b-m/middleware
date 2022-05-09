@@ -1,6 +1,6 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences, basalProfile) {
-     
-    // This middleware wworks with my experimental "bdb" branch.
+    
+    // Dynamic ratios and TDD calculation
     const BG = glucose[0].glucose;
     var chrisFormula = preferences.enableChris;
     var useDynamicCR = preferences.enableDynamicCR;
@@ -355,7 +355,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     const ucpk = preferences.useCustomPeakTime;
     var insulinFactor = 55;
     switch (curve) {
-        case "rapid-acting": 
+        case "rapid-acting":
             insulinFactor = 55;
             break;
         case "ultra-rapid":
@@ -369,13 +369,13 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     // var newRatio = profile.sens * adjustmentFactor * TDD * BG / 277700;
     //
     // New logarithmic formula : var newRatio = profile.sens * adjustmentFactor * TDD * ln(( BG/insulinFactor) + 1 )) / 1800
-    // 
+    //
     if (preferences.useNewFormula == true) {
         var newRatio = profile.sens * adjustmentFactor * TDD * Math.log(BG/insulinFactor+1) / 1800;
         formula = "Logarithmic formula. InsulinFactor: " + insulinFactor + ". ";
 
-    } 
-    else {  
+    }
+    else {
         var newRatio = profile.sens * adjustmentFactor * TDD * BG / 277700;
         formula = "Original formula. ";
     }
@@ -403,7 +403,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         }
         
         // Set the new ratio
-        autosens.ratio = round(newRatio, 2);
+        autosens.ratio = newRatio;
         
         logOutPut = startLog + dataLog + bgLog + afLog + formula + log + logTDD + logBolus + logTempBasal + logBasal;
     } else if (chrisFormula == false && useDynamicCR == true) {
