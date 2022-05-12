@@ -1,5 +1,5 @@
 function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences, basalProfile) {
-    
+     
     // Dynamic ratios and TDD calculation
     const BG = glucose[0].glucose;
     var chrisFormula = preferences.enableChris;
@@ -365,7 +365,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
             break;
     }
 
-    // Modified Chris Wilson's' formula with added adjustmentFactor for tuning and use instead of autosens:
+    // Modified Chris Wilson's' formula with added adjustmentFactor for tuning and to use instead of autosens.ratio:
     // var newRatio = profile.sens * adjustmentFactor * TDD * BG / 277700;
     //
     // New logarithmic formula : var newRatio = profile.sens * adjustmentFactor * TDD * ln(( BG/insulinFactor) + 1 )) / 1800
@@ -380,34 +380,37 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         formula = "Original formula. ";
     }
             
-    var isf = profile.sens / newRatio;
-
-    // Dynamic CR (Test)
     var cr = profile.carb_ratio;
-    if (useDynamicCR == true) {
-        cr = round(profile.carb_ratio/newRatio, 2);
-        profile.carb_ratio = cr;
-    }
     
     if (chrisFormula == true && TDD > 0) {
        
-        log = "Dynamic autosens.ratio set to " + newRatio.toPrecision(3) + " with ISF: " + isf.toPrecision(3) + " mg/dl/U (" + (isf * 0.0555).toPrecision(3) + " mmol/l/U) and CR: " + cr + " g/U";
-
         // Respect autosens.max and autosens.min limits
         if (newRatio > maxLimitChris) {
-            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / maxLimitChris).toPrecision(3) + " mg/dl/U (" + ((profile.sens / maxLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U) and CR: " + cr + " g/U";
+            log = "Dynamic ISF hit limit by autosens_max setting: " + maxLimitChris + " (" +  newRatio.toPrecision(3) + "), ";
             newRatio = maxLimitChris;
         } else if (newRatio < minLimitChris) {
-            log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + ")" + ". ISF: " + (profile.sens / minLimitChris).toPrecision(3) + " mg/dl/U (" + ((profile.sens / minLimitChris) * 0.0555).toPrecision(3) + " mmol/l/U) and CR: " + cr + " g/U";
+            log = "Dynamic ISF hit limit by autosens_min setting: " + minLimitChris + " (" +  newRatio.toPrecision(3) + "). ";
             newRatio = minLimitChris;
         }
         
+        // Dynamic CR (Test)
+        if (useDynamicCR == true) {
+            cr = round(cr/newRatio, 2);
+            profile.carb_ratio = cr;
+            var logCR = " Dynamic CR: " + cr + " g/U";
+        } else { var logCR = " CR: " + cr + " g/U"; }
+
+        var isf = profile.sens / newRatio;
+
+        log += "Dynamic autosens.ratio set to " + newRatio.toPrecision(3) + " with ISF: " + isf.toPrecision(3) + " mg/dl/U (" + (isf * 0.0555).toPrecision(3) + " mmol/l/U) and" + logCR;
+
         // Set the new ratio
         autosens.ratio = newRatio;
+
         
         logOutPut = startLog + dataLog + bgLog + afLog + formula + log + logTDD + logBolus + logTempBasal + logBasal;
     } else if (chrisFormula == false && useDynamicCR == true) {
-        logOutPut = startLog + bgLog + afLog + formula + "Dynamic ISF is off. Dynamic CR: " + cr + " g/U.";
+        logOutPut = startLog + bgLog + afLog + formula + "Dynamic ISF is off." + logCR;
     } else {
         logOutPut = startLog + "Dynamic ISF is off. Dynamic CR is off." ;
     }
