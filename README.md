@@ -10,11 +10,13 @@ To access middleware on your phone, first enable debug settings.
 
 Then replace the MW here:
 
+
 ![image](https://user-images.githubusercontent.com/53905247/168448911-4cb870d8-f458-42ec-b1f8-c551334ea7ab.jpeg)
 
 
 
-Pleasd be careful and monitor your BG closely when testing MW. 
+
+Please be careful and monitor your BG closely. 
 
 
 Telegram group for interaction and sharing:
