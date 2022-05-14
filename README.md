@@ -27,18 +27,13 @@ adjustmentFactor is used for tuning of the constant 277700 in Chris Wilson's for
 
 
 ---------------------------------------                                                                                                           
-<B>DISF_with_TDD_and_preferences.js </B>
+<B>dynRatios.js </B>
 
 Like Dynamic_ISF_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set in FAX preferences.
-  
-<B>This middleware only works my branch "mw_preferences"). </B>
-  
----------------------------------------
-<B>Dynamic_ISF_and_CR_and_TDD.js </B>
 
-Like Dynamic_ISF_with_calculated_TDD.js but with optional Dynamic CR in mw and in settings. 
+With optional Dynamic CR and logarithmic formula and TDD output in FreeAPS X pop up (the blue and purple boxes).
 
-<B>Only works with my branch "dyn_ISF_and_CR" </B>
+<B>Only works with my branch "dynRatios" </B>
   
 --------------------------------------- 
 <B>Chris_formula_autosensRatio.js </B>
@@ -53,15 +48,6 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 
 <B>Please note that this is an experimental approach, so be careful and use it at your own risk!</B>
 
----------------------------------------
-<B>c_formula_with_conditions.js </B> 
-  
- This is Chris' original formula without the TDD calculation. You need to enter your TDD manually in middlware. 
-  
- Autosens min/max limits in FAX settings are used to limit the dynamic ISF. Normal autosens is by-passed.
- 
- adjustmentFactor to change Chris'constant. I higer value (>1) means more dramatic ISF changes, a lower (<1) means less aggresive changes. 
-                                                                                                             
 ---------------------------------------
 <B>bdb_branch.js </B> 
  
