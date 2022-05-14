@@ -1,0 +1,18 @@
+function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoir, clock, pumphistory, preferences) {
+
+  // This middleware only works with Ivan’s FAX and uses Chris Formula for Dynamic ISF based on autosens factor.
+  
+  //define variables  
+  const BG = glucose[0].glucose;
+  var chrisFormula = true;
+  var autosensRatio = autosens.ratio;
+      //Note: adjustmentFactor default value=1. Lower number = milder dISF profile
+  var adjustmentFactor = 1;
+
+  //Chris' formula with added adjustmentFactor for tuning:
+  if (chrisFormula == true) {
+ const newRatio = profile.sens / (277700  / (25 * adjustmentFactor * autosensRatio * BG));
+  autosens.ratio = newRatio;
+  return "autosensRatio changed using Chris' formula from " + autosensRatio + " to: " + newRatio.toPrecision(4) + " with new ISF: " +  (profile.sens / newRatio).toPrecision(4) + " (" + ((profile.sens / newRatio) * 0.0555).toPrecision(4) + " mmol/L/U)";
+ } else  { return "Chris' formula is off. autosensRatio is: " + autosensRatio; }
+}
