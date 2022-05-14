@@ -19,7 +19,7 @@ Your new ISF = profile.sens / newRatio .
 
 Autosens min/max settings are respected, for me 0.7 - 1.3 works well. This middleware by-passes the normal autosens, unless when using a high temp target while exercising, and the autosens limits are instead used for limiting the dynamic ISF. 
 
-When using a high temp target (>= 118 mg/dl) together with an exercise setting, Chris' formula is temporarily turned off (as well as AutoISF, if this is used). 
+When using a high temp target (>= 118 mg/dl) together with an exercise setting, Chris' formula is temporarily turned off. 
 
 adjustmentFactor is used for tuning of the constant 277700 in Chris Wilson's formula. More  dramatic ISF change > 1 > less dramtaic ISF change. 1 is set as default. 
 
