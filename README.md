@@ -4,9 +4,11 @@ For use with FreeAPS X.
 Normally you can copy and paste (replace) into FAX middleware function, but some of the MWs here require a special branch.
 
 To access middleware on your phone, first enable debug settings.
+
 ![image](https://user-images.githubusercontent.com/53905247/168448714-b9b23e8d-09b8-4416-bccc-bd962a2030c9.png)
 
 Then replace the MW here:
+
 ![image](https://user-images.githubusercontent.com/53905247/168448722-a6ae4f5d-bb1d-407b-a259-a10c21b5418c.png)
 
 Pleasd be careful and monitor your BG closely when testing MW. 
