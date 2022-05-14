@@ -5,11 +5,14 @@ Normally you can copy and paste (replace) into FAX middleware function, but some
 
 To access middleware on your phone, first enable debug settings.
 
-![image](https://user-images.githubusercontent.com/53905247/168448714-b9b23e8d-09b8-4416-bccc-bd962a2030c9.png)
+![image](https://user-images.githubusercontent.com/53905247/168448905-c0a948b2-c4e3-49a6-8218-081d30e7610c.jpeg)
+
 
 Then replace the MW here:
 
-![image](https://user-images.githubusercontent.com/53905247/168448722-a6ae4f5d-bb1d-407b-a259-a10c21b5418c.png)
+![image](https://user-images.githubusercontent.com/53905247/168448911-4cb870d8-f458-42ec-b1f8-c551334ea7ab.jpeg)
+
+
 
 Pleasd be careful and monitor your BG closely when testing MW. 
 
