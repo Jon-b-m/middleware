@@ -1,7 +1,7 @@
 # middleware
 For use with FreeAPS X.
 
-Normally you can copy and paste (replace) into FAX middleware function, but some of the MWs here require a special branch.
+Normally you can copy and replace the FAX middleware function, but some of the MWs here require a special branch.
 
 To access middleware on your phone, first enable debug settings.
 
