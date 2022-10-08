@@ -17,7 +17,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     //Blood glucose deviation from set target (the lower BG target) converted to mmol/l to fit current formula. 
     const bg_dev = (current_bg - profile.min_bg) * 0.0555;
     // Account for TDD of insulin. Compare last 2 hours with total data (up to 14 days)
-    const tdd_factor = tdd_averages.past2hoursAverage / tdd_averages.average_total_data;
+    const tdd_factor = tdd_averages.weightedAverage / tdd_averages.average_total_data;
     // Reduce to make less aggressive
     const adjustment_factor = profile.adjustmentFactor;
     const max_minus_one = profile.autosens_max - 1;
