@@ -6,7 +6,9 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         return Math.round(value * scale) / scale; 
     }
 
+    // Change to false if you don't want to use sigmoid ISF adjustment anymore. Sigmoid ISF will not be used when dynamic ISF setting is on. 
     const enable_sigmoid = true;
+    // Is dynamic ISF enabled?
     const dyn_enabled = profile.enableChris;
     const current_bg = glucose[0].glucose;
     const as_min = profile.autosens_min;
