@@ -25,6 +25,8 @@ https://t.me/middleware_freeaps_x
 ---------------------------------------
 <B>Dynamic_ISF_with_calculated_TDD.js </B>
 
+THIS MW IS OUTDATED. I NOW HAVE A bdb BRANCH INSTEAD WITH LOTS OF IMPROVEMENTS.
+
 Calculates past 24 hours of total daily dose (TDD) of insulin from pumphistory-24h-zoned.json every loop. If not enough data in pump history (<23.5 h), your scheduled basal rate insulin will replace the missing hours. But normally if you've run FAX for 24 hours, pump history data will be enough.
 
 A new autosens ratio is set using Chris Wilson's formula: newRatio = profile.sens * adjustmentFactor * TDD * BGG / 277700 .
@@ -42,6 +44,8 @@ adjustmentFactor is used for tuning of the constant 277700 in Chris Wilson's for
 
 ---------------------------------------                                                                                                           
 <B>dynRatios.js </B>
+
+THIS MW IS OUTDATED. I NOW HAVE A bdb BRANCH INSTEAD WITH LOTS OF IMPROVEMENTS.
 
 Like Dynamic_ISF_with_calculated_TDD.js but with access to FAX preferences, which means the adjustment factor and a toggle to enable/disable Chris' formula can be set in FAX preferences.
 
@@ -65,4 +69,9 @@ In order to identify the optimal value of adjustableFactor, it has been created 
 ---------------------------------------
 <B>bdb_branch.js </B> 
  
- Experimental MW for my own use and for testing new code. 
+THIS MW IS OUTDATED. I NOW HAVE A bdb BRANCH INSTEAD WITH LOTS OF IMPROVEMENTS.
+
+-----------------------------------------------------------------------
+<B>sigmoid_function.js </B>
+
+This MW uses a sigmoid function for ISF. The autosens.min/max limits determines the height of the graph (Y-interval) and where the sigmoid curve flattens out. The Adjustment settings adjusts the slope of the curve. A lower value ==> less steep. Is only used when the Dynamic ISF setting is off in FAX settings. Dyanmic CR is used when the setting 'Enable Dynamic CR' is enabled in FAX setting. 
