@@ -39,7 +39,7 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
         // Dynamic CR. Use only when the setting 'Enable Dyanmic CR' is on in FAX Dynamic Settings
         if (autosens.ratio > 1 && profile.enableDynamicCR) {
             profile.carb_ratio /= ((autosens.ratio - 1) / 2 + 1);
-        } else { profile.carb_ratio /= autosens.ratio; }
+        } else if (profile.enableDynamicCR) { profile.carb_ratio /= autosens.ratio; }
 
         const new_isf = profile.sens/autosens.ratio;
         
