@@ -75,3 +75,5 @@ THIS MW IS OUTDATED. I NOW HAVE A bdb BRANCH INSTEAD WITH LOTS OF IMPROVEMENTS.
 <B>sigmoid_function.js </B>
 
 This MW uses a sigmoid function for ISF. The autosens.min/max limits determines the height of the graph (Y-interval) and where the sigmoid curve flattens out. The Adjustment settings adjusts the slope of the curve. A lower value ==> less steep. Is only used when the Dynamic ISF setting is off in FAX settings. Dyanmic CR is used when the setting 'Enable Dynamic CR' is enabled in FAX setting. 
+
+To have access to these settings you'll to use my bdb branch: https://github.com/Jon-b-m/freeaps/tree/bdb
