@@ -25,16 +25,24 @@ function middleware(iob, currenttemp, glucose, profile, autosens, meal, reservoi
     const fix_offset = (Math.log10(1/max_minus_one-as_min/max_minus_one) / Math.log10(Math.E));
     //Exponent used in sigmoid formula
     const exponent = bg_dev * adjustment_factor * tdd_factor + fix_offset;
-    
+    // The sigmoid function
     const sigmoid_factor = autosens_interval / (1 + Math.exp(-exponent)) + as_min;
     
 
-    //Only use when dynISF is off and enable_sigmoid = true.
+    //Only use when dynISF setting is off and the constant enable_sigmoid = true.
     if (enable_sigmoid && !dyn_enabled) { 
         // Replace the autosens.ratio with this calculation
         autosens.ratio = sigmoid_factor;
+
+        const normal_cr = profile.carb_ratio;
+
+        // Dynamic CR. Use only when the setting 'Enable Dyanmic CR' is on in FAX Dynamic Settings
+        if (autosens.ratio > 1 && profile.enableDynamicCR) {
+            profile.carb_ratio /= ((autosens.ratio - 1) / 2 + 1);
+        } else { profile.carb_ratio /= autosens.ratio; }
+
         const new_isf = profile.sens/autosens.ratio;
-        return "Using Middleware function, the autosens ratio has been adjusted with sigmoid factor to: " + round(autosens.ratio, 2) + ". New ISF = " + round(new_isf, 2) + " mg/dl (" + round(0.0555 * new_isf, 2) + " (mmol/l)";
+        
+        return "Using Middleware function, the autosens ratio has been adjusted with sigmoid factor to: " + round(autosens.ratio, 2) + ". New ISF = " + round(new_isf, 2) + " mg/dl (" + round(0.0555 * new_isf, 2) + " (mmol/l)" + ". CR adjusted from " + round(normal_cr,2) + " to " + round(profile.carb_ratio,2) + " (" + round(0.0555 * profile.carb_ratio, 2) + " mmol/l).";
     } else { return "Nothing changed"; }
-    
 }
