@@ -80,4 +80,4 @@ To have access to these settings you'll have to use my bdb branch: https://githu
 
 -----------------------------------------------------------------------
 
-Want to buy me a coffe? My PayPal is jon.m@live.se 
+Want to buy me a coffe? My PayPal is jon.m@live.se (Sweden, Europe)
